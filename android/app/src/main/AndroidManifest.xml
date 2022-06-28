@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.turibo">
+    package="com.app.turiba">
    <application
-        android:label="turibo"
+        android:label="turiba"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

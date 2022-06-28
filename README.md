@@ -1,15 +1,16 @@
-# Turiba
-A mobile application that provides information about natural tourist sites and suggests tourist routes. It is needed that when the user is in a perimeter near a tourist site, information can be displayed with augmented reality and with the help of geolocation. In order for the application to suggest routes to the user, it is necessary to implement collaborative filters.
-It is also desired to have a web portal for administrators to upload information from tourist sites.
+# turiba
 
-- Develop a mobile application with flutter
-- Implement a login with google
-- Implement geolocation
-- Implement the wikitude library for augmented reality.
-- Implementation of collaborative filters
+A new Flutter project.
 
-figma https://www.figma.com/file/tt2qPwEizbRIPXlRtXUXDK/Untitled?node-id=1264%3A2
+## Getting Started
 
-## Architecture 🏛
-This project is made wirh Flutter TDD Clean Architecture
+This project is a starting point for a Flutter application.
 
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

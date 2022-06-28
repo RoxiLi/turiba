@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1057584388099",
+    "project_id": "turiba-d29c8",
+    "storage_bucket": "turiba-d29c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057584388099:android:fd728082d6ea35ca4ed636",
+        "android_client_info": {
+          "package_name": "com.app.turiba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057584388099-ntu47hj4id8liofg8vl882ghjq4tfg5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrSiWURkm_6zZQIz8whwSnz-ok45qgv54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057584388099-ntu47hj4id8liofg8vl882ghjq4tfg5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
