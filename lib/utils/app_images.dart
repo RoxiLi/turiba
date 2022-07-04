@@ -6,4 +6,8 @@ class AppImages {
   static const onBoard3 = "assets/images/board3.png";
 
   /// Icons
+
+  static const google = "assets/svg/google.svg";
+  static const facebook = "assets/svg/facebook.svg";
+  static const search = "assets/svg/search.svg";
 }

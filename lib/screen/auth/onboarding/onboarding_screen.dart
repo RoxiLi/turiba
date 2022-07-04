@@ -15,11 +15,14 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.transparent, // optional
+    ));
     return Scaffold(
         backgroundColor: AppColors.appBlackColor,
         body: Column(
           children: [
-            SizedBox(height: Get.height * 0.1),
+            SizedBox(height: Get.height * 0.2),
             Flexible(
               child: PageView.builder(
                 controller: con.controller,
@@ -31,26 +34,29 @@ class OnBoardingScreen extends StatelessWidget {
                 itemBuilder: (context, position) {
                   return Obx(() => AnimatedContainer(
                         duration: const Duration(seconds: 1),
-                        child: Padding(
-                            padding: EdgeInsets.only(
-                                right: con.currentScreen.value == 1
-                                    ? Get.width * 0.05
-                                    : 0,
-                                left: con.currentScreen.value == 2
-                                    ? Get.width * 0.2
-                                    : 0),
-                            child: Image.asset(con
-                                .onBoardingList[con.currentScreen.value]
-                                .image)),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Align(
+                            alignment: con.currentScreen.value == 1
+                                ? Alignment.centerLeft
+                                : con.currentScreen.value == 2
+                                    ? Alignment.centerRight
+                                    : Alignment.center,
+                            child: Image.asset(
+                              con.onBoardingList[con.currentScreen.value].image,
+                            ),
+                          ),
+                        ),
                       ));
                 },
               ),
             ),
+            hSizedBox24,
             Obx(() => AnimatedContainer(
                   duration: const Duration(seconds: 1),
                   child: Text(
                     con.onBoardingList[con.currentScreen.value].title,
-                    style: textStyle(
+                    style: textStyleABeeZee(
                       color: AppColors.white,
                       fontSize: 24,
                     ),
@@ -91,7 +97,7 @@ class OnBoardingScreen extends StatelessWidget {
               },
               child: Text(
                 AppString.following,
-                style: textStyle(
+                style: textStyleAbel(
                   color: AppColors.white,
                   fontSize: 18,
                 ),

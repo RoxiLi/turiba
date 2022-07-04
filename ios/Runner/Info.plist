@@ -30,6 +30,23 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>FacebookAppID</key>
+    <string>723025398721328</string>
+    <key>FacebookClientToken</key>
+    <string>fb723025398721328</string>
+    <key>FacebookDisplayName</key>
+    <string>Easy Bites</string>
+	<key>CFBundleURLTypes</key>
+    <array>
+    	<dict>
+    		<key>CFBundleTypeRole</key>
+    		<string>Editor</string>
+    		<key>CFBundleURLSchemes</key>
+    		<array>
+    			<string>com.googleusercontent.apps.1057584388099-ctqins1c9t30g3bo4mjlrsf1g4jadmt6</string>
+    		</array>
+    	</dict>
+    </array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

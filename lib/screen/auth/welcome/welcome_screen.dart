@@ -5,7 +5,6 @@ import 'package:turiba/screen/auth/onboarding/onboarding_screen.dart';
 import 'package:turiba/utils/app_color.dart';
 import 'package:turiba/utils/app_images.dart';
 import 'package:turiba/utils/app_string.dart';
-import 'package:turiba/utils/sizedbox.dart';
 import 'package:turiba/utils/text_style.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -13,6 +12,9 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.transparent, // optional
+    ));
     return Scaffold(
       backgroundColor: AppColors.appBlackColor,
       body: Center(
@@ -24,17 +26,15 @@ class WelcomeScreen extends StatelessWidget {
             const Spacer(),
             Text(
               AppString.appName,
-              style: textStyle(
+              style: textStylePTMono(
                 color: AppColors.white,
                 fontSize: 42,
               ),
             ),
             Text(
               AppString.routesBaths,
-              style: textStyle(
-                color: AppColors.white,
-                fontSize: 12,
-              ),
+              style: textStyleAbel(
+                  color: AppColors.white, fontSize: 12, letterSpacing: 3),
             ),
             Image.asset(
               AppImages.appLogo,
@@ -55,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
                 child: Center(
                   child: Text(
                     AppString.letStart,
-                    style: textStyle(fontSize: 18),
+                    style: textStyleAbel(fontSize: 18),
                   ),
                 ),
               ),
@@ -67,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
               },
               child: Text(
                 AppString.skip,
-                style: textStyle(
+                style: textStyleAbel(
                   fontSize: 18,
                   color: AppColors.white,
                 ),
