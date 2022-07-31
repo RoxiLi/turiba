@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:turiba/injection.dart';
 import 'package:turiba/screen/auth/login/login_bloc/login_bloc.dart';
 import 'package:turiba/utils/app_color.dart';
@@ -10,6 +11,8 @@ import 'package:turiba/utils/app_string.dart';
 import 'package:turiba/utils/sizedbox.dart';
 import 'package:turiba/utils/text_style.dart';
 import 'package:turiba/utils/widget/app_snackbar.dart';
+
+import '../auth_bloc/auth_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -47,6 +50,11 @@ class LoginScreen extends StatelessWidget {
                   hSizedBox36,
                   BlocConsumer<LoginBloc, LoginState>(
                     listener: (context, state) {
+                      final bloc = context.read<AuthBloc>();
+                      void goToSplash() {
+                        Navigator.pushReplacementNamed(context, "/splash");
+                      }
+
                       state.loginOrFailureOption.fold(
                         () => null,
                         (either) => either.fold(
@@ -58,10 +66,16 @@ class LoginScreen extends StatelessWidget {
                             ),
                             false,
                           ),
-                          (user) => toast(
-                            "Bienvenido ${user.name}",
-                            true,
-                          ),
+                          (user) async {
+                            var box = await Hive.openBox('auth');
+                            box.put('userId', user.id);
+                            toast(
+                              "Bienvenido ${user.name}",
+                              true,
+                            );
+                            bloc.add(const AuthEvent.checkAuth());
+                            goToSplash();
+                          },
                         ),
                       );
                     },

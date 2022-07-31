@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:turiba/injection.dart';
 import 'package:turiba/screen/auth/auth_bloc/auth_bloc.dart';
@@ -19,6 +20,8 @@ void main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
+  await Hive.initFlutter();
+  await Hive.openBox('auth');
   await Firebase.initializeApp(
     options: DefaultFirebaseConfig.platformOptions,
     name: 'turiba-d29c8',

@@ -33,6 +33,7 @@ class AuthRepository extends IAuthRepository {
 
       return right(
         UserModel(
+          id: authResult.user!.uid,
           name: authResult.additionalUserInfo?.username ?? "",
         ),
       );
