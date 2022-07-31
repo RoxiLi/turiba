@@ -254,7 +254,7 @@ class RegisterScreen extends StatelessWidget {
                         highlightColor: Colors.transparent,
                         onTap: () {
                           HapticFeedback.heavyImpact();
-                          Get.to(() => LoginScreen());
+                          Get.to(() => const LoginScreen());
                         },
                         child: Text(
                           AppString.alreadyHaveAccount,

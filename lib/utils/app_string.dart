@@ -3,7 +3,7 @@ class AppString {
 
   static const String appName = 'TURIBA';
   static const String routesBaths = 'RUTAS Y BANOS';
-  static const String letStart = 'Empecemo';
+  static const String letStart = 'Empecemos';
   static const String skip = 'Saltar';
   static const String following = 'Siguiente';
 

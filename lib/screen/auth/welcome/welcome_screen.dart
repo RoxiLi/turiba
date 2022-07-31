@@ -43,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 HapticFeedback.heavyImpact();
-                Get.to(() => OnBoardingScreen());
+                Get.to(() => const OnboardingScreen());
               },
               child: Container(
                 width: Get.width * 0.84,
@@ -52,10 +52,9 @@ class WelcomeScreen extends StatelessWidget {
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     AppString.letStart,
-                    style: textStyleAbel(fontSize: 18),
                   ),
                 ),
               ),

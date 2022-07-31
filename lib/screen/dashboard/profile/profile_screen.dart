@@ -127,9 +127,7 @@ class ProfileScreen extends StatelessWidget {
                                         Icons.star,
                                         color: Color(0xFFD5853B),
                                       ),
-                                      onRatingUpdate: (rating) {
-                                        print(rating);
-                                      },
+                                      onRatingUpdate: (rating) {},
                                     )
                                   ],
                                 ),

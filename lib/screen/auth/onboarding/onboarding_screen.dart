@@ -1,111 +1,215 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:turiba/screen/auth/onboarding/onboarding_controller.dart';
-import 'package:turiba/utils/app_color.dart';
-import 'package:turiba/utils/app_images.dart';
+import 'package:onboarding/onboarding.dart';
 import 'package:turiba/utils/app_string.dart';
-import 'package:turiba/utils/sizedbox.dart';
-import 'package:turiba/utils/text_style.dart';
 
-class OnBoardingScreen extends StatelessWidget {
-  OnBoardingScreen({Key? key}) : super(key: key);
+import '../../../utils/app_color.dart';
+import '../../../utils/app_images.dart';
 
-  final OnBoardingController con = Get.put(OnBoardingController());
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({Key? key}) : super(key: key);
+
+  @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  late Material materialButton;
+  late int index;
+
+  List<PageModel> getList(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    return [
+      PageModel(
+        widget: DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 0.0,
+              color: background,
+            ),
+          ),
+          child: SingleChildScrollView(
+            controller: ScrollController(),
+            child: SizedBox(
+              height: height * 0.8,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 90.0,
+                    ),
+                    child: Image.asset(
+                      AppImages.onBoard1,
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 45.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'SECURED BACKUP',
+                        style: pageTitleStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 45.0, vertical: 10.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Keep your files in closed safe so you can\'t lose them. Consider TrueNAS.',
+                        style: pageInfoStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      PageModel(
+        widget: SingleChildScrollView(
+          controller: ScrollController(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 90.0,
+                ),
+                child: Image.asset(
+                  AppImages.onBoard2,
+                  fit: BoxFit.fitHeight,
+                  height: 450,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 45.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    children: const [
+                      Text(
+                        'CHANGE AND RISE',
+                        style: pageTitleStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        'Give others access to any file or folders you choose',
+                        style: pageInfoStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ];
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    materialButton = _skipButton();
+    index = 0;
+  }
+
+  Material _skipButton({void Function(int)? setIndex}) {
+    return Material(
+      borderRadius: defaultSkipButtonBorderRadius,
+      color: defaultSkipButtonColor,
+      child: InkWell(
+        borderRadius: defaultSkipButtonBorderRadius,
+        onTap: () {
+          if (setIndex != null) {
+            index = 1;
+            setIndex(1);
+          }
+        },
+        child: const Padding(
+          padding: defaultSkipButtonPadding,
+          child: Text(
+            AppString.skip,
+            style: defaultSkipButtonTextStyle,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Material get _signupButton {
+    return Material(
+      borderRadius: defaultProceedButtonBorderRadius,
+      color: defaultProceedButtonColor,
+      child: InkWell(
+        borderRadius: defaultProceedButtonBorderRadius,
+        onTap: () {
+          HapticFeedback.heavyImpact();
+          Navigator.pushNamed(context, "/login");
+        },
+        child: const Padding(
+          padding: defaultProceedButtonPadding,
+          child: Text(
+            AppString.sigIn,
+            style: defaultProceedButtonTextStyle,
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-      statusBarColor: Colors.transparent, // optional
-    ));
     return Scaffold(
-        backgroundColor: AppColors.appBlackColor,
-        body: Column(
-          children: [
-            SizedBox(height: Get.height * 0.2),
-            Flexible(
-              child: PageView.builder(
-                controller: con.controller,
-                physics: const BouncingScrollPhysics(),
-                itemCount: con.onBoardingList.length,
-                onPageChanged: (index) {
-                  con.currentScreen.value = index;
-                },
-                itemBuilder: (context, position) {
-                  return Obx(() => AnimatedContainer(
-                        duration: const Duration(seconds: 1),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Align(
-                            alignment: con.currentScreen.value == 1
-                                ? Alignment.centerLeft
-                                : con.currentScreen.value == 2
-                                    ? Alignment.centerRight
-                                    : Alignment.center,
-                            child: Image.asset(
-                              con.onBoardingList[con.currentScreen.value].image,
-                            ),
-                          ),
-                        ),
-                      ));
-                },
+      backgroundColor: AppColors.appBlackColor,
+      body: Onboarding(
+        pages: getList(context),
+        onPageChange: (int pageIndex) {
+          index = pageIndex;
+        },
+        startPageIndex: 0,
+        footerBuilder: (context, dragDistance, pagesLength, setIndex) {
+          return DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 0.0,
               ),
             ),
-            hSizedBox24,
-            Obx(() => AnimatedContainer(
-                  duration: const Duration(seconds: 1),
-                  child: Text(
-                    con.onBoardingList[con.currentScreen.value].title,
-                    style: textStyleABeeZee(
-                      color: AppColors.white,
-                      fontSize: 24,
+            child: Padding(
+              padding: const EdgeInsets.all(45.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomIndicator(
+                    netDragPercent: dragDistance,
+                    pagesLength: pagesLength,
+                    indicator: Indicator(
+                      indicatorDesign: IndicatorDesign.line(
+                        lineDesign: LineDesign(
+                          lineType: DesignType.line_uniform,
+                        ),
+                      ),
                     ),
                   ),
-                )),
-            hSizedBox36,
-            SizedBox(
-              height: 40,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: 4,
-                itemBuilder: (BuildContext context, int index) {
-                  return Obx(() => AnimatedContainer(
-                        duration: const Duration(seconds: 1),
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 5),
-                          height: con.currentScreen.value == index ? 10 : 8,
-                          width: con.currentScreen.value == index ? 10 : 8,
-                          decoration: BoxDecoration(
-                            color: con.currentScreen.value == index
-                                ? AppColors.white
-                                : AppColors.white.withOpacity(0.5),
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                      ));
-                },
+                  index == pagesLength - 1
+                      ? _signupButton
+                      : _skipButton(setIndex: setIndex)
+                ],
               ),
             ),
-            hSizedBox30,
-            InkWell(
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () {
-                HapticFeedback.heavyImpact();
-                con.currentScreen.value++;
-              },
-              child: Text(
-                AppString.following,
-                style: textStyleAbel(
-                  color: AppColors.white,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-            hSizedBox36,
-            hSizedBox12,
-          ],
-        ));
+          );
+        },
+      ),
+    );
   }
 }
