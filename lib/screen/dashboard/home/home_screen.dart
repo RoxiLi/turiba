@@ -7,15 +7,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:turiba/injection.dart';
+import 'package:turiba/screen/auth/models/user.dart';
+import 'package:turiba/screen/dashboard/home/model/place.dart';
 import 'package:turiba/screen/dashboard/home/places_bloc/places_bloc.dart';
+import 'package:turiba/screen/dashboard/profile/profile_bloc/profile_bloc.dart';
 import 'package:turiba/screen/dashboard/profile/profile_screen.dart';
 import 'package:turiba/utils/app_color.dart';
 import 'package:turiba/utils/app_images.dart';
 import 'package:turiba/utils/app_string.dart';
 import 'package:turiba/utils/sizedbox.dart';
 import 'package:turiba/utils/text_style.dart';
-
-import '../../core/loading.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -30,44 +31,21 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             hSizedBox16,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Get.to(() => ProfileScreen());
-                    },
-                    child: Row(
-                      children: [
-                        const CircleAvatar(
-                          radius: 24,
-                          backgroundColor: AppColors.greyColor,
-                        ),
-                        wSizedBox10,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "DANILIA",
-                              style: textStyleLato(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+            BlocProvider(
+              create: (context) => getIt<ProfileBloc>()
+                ..add(
+                  const ProfileEvent.getProfile(),
+                ),
+              child: BlocBuilder<ProfileBloc, ProfileState>(
+                  builder: (context, state) {
+                return state.map(
+                  loading: (_) => const SizedBox(),
+                  loaded: (loaded) => Profile(
+                    user: loaded.user,
+                    places: loaded.places,
                   ),
-                  const Spacer(),
-                  SvgPicture.asset(
-                    AppImages.search,
-                    height: 25,
-                    width: 25,
-                  )
-                ],
-              ),
+                );
+              }),
             ),
             hSizedBox30,
             Expanded(
@@ -111,6 +89,65 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Profile extends StatelessWidget {
+  final UserModel? user;
+  final List<Place>? places;
+
+  const Profile({
+    Key? key,
+    this.user,
+    required this.places,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          InkWell(
+            onTap: () {
+              Get.to(
+                () => ProfileScreen(
+                  user: user,
+                  places: places,
+                ),
+              );
+            },
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  radius: 24,
+                  backgroundColor: AppColors.greyColor,
+                ),
+                wSizedBox10,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      user?.name ?? "",
+                      style: textStyleLato(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const Spacer(),
+          SvgPicture.asset(
+            AppImages.search,
+            height: 25,
+            width: 25,
+          )
+        ],
       ),
     );
   }
