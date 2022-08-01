@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1057584388099-ctqins1c9t30g3bo4mjlrsf1g4jadmt6.apps.googleusercontent.com</string>
+	<string>50685434499-u8st2njjpk4bpemhcg0sec9tcisfm1pq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1057584388099-ctqins1c9t30g3bo4mjlrsf1g4jadmt6</string>
+	<string>com.googleusercontent.apps.50685434499-u8st2njjpk4bpemhcg0sec9tcisfm1pq</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDGiLndJ809XOYGCTmZ2_uH14fz86VIfXQ</string>
+	<string>AIzaSyCLp-yixkcrRXdWtVcPZ9GpQqt9eFAjY18</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1057584388099</string>
+	<string>50685434499</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.io.turiba</string>
 	<key>PROJECT_ID</key>
-	<string>turiba-d29c8</string>
+	<string>turiba-18387</string>
 	<key>STORAGE_BUCKET</key>
-	<string>turiba-d29c8.appspot.com</string>
+	<string>turiba-18387.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1057584388099:ios:61532e8b0b12a8234ed636</string>
+	<string>1:50685434499:ios:a6736d9d6db3c7f01e59b6</string>
 </dict>
 </plist>

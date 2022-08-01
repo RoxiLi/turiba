@@ -6,4 +6,5 @@ abstract class IAuthRepository {
   Future<Either<Failure, UserModel>> signInOrSignUpWithGoogle();
   Future<void> logOut();
   bool isSignedInUser();
+  UserModel? getUser();
 }

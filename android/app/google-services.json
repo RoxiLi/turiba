@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "1057584388099",
-    "project_id": "turiba-d29c8",
-    "storage_bucket": "turiba-d29c8.appspot.com"
+    "project_number": "50685434499",
+    "project_id": "turiba-18387",
+    "storage_bucket": "turiba-18387.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1057584388099:android:fd728082d6ea35ca4ed636",
+        "mobilesdk_app_id": "1:50685434499:android:74d0bf9e703cd21b1e59b6",
         "android_client_info": {
           "package_name": "com.app.turiba"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1057584388099-ntu47hj4id8liofg8vl882ghjq4tfg5l.apps.googleusercontent.com",
+          "client_id": "50685434499-shs50mkrpdic0sv548na8pkrt815tdj5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDrSiWURkm_6zZQIz8whwSnz-ok45qgv54"
+          "current_key": "AIzaSyCIeL_RLwGONYH7Gu_-ZGQbnVWv0QML-J4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1057584388099-ntu47hj4id8liofg8vl882ghjq4tfg5l.apps.googleusercontent.com",
+              "client_id": "50685434499-shs50mkrpdic0sv548na8pkrt815tdj5.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "50685434499-u8st2njjpk4bpemhcg0sec9tcisfm1pq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.io.turiba"
+              }
             }
           ]
         }

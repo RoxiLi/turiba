@@ -4,4 +4,5 @@ part of 'places_bloc.dart';
 class PlacesEvent with _$PlacesEvent {
   const factory PlacesEvent.getPlaces() = GetPlaces;
   const factory PlacesEvent.getFavoritesPlaces() = GetFavoritesPlaces;
+  const factory PlacesEvent.getLikedPlaces() = GetLikedPlaces;
 }

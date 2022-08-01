@@ -20,18 +20,21 @@ mixin _$PlacesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getPlaces,
     required TResult Function() getFavoritesPlaces,
+    required TResult Function() getLikedPlaces,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPlaces,
     TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPlaces,
     TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$PlacesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPlaces value) getPlaces,
     required TResult Function(GetFavoritesPlaces value) getFavoritesPlaces,
+    required TResult Function(GetLikedPlaces value) getLikedPlaces,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPlaces value)? getPlaces,
     TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPlaces value)? getPlaces,
     TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$GetPlaces implements GetPlaces {
   TResult when<TResult extends Object?>({
     required TResult Function() getPlaces,
     required TResult Function() getFavoritesPlaces,
+    required TResult Function() getLikedPlaces,
   }) {
     return getPlaces();
   }
@@ -123,6 +130,7 @@ class _$GetPlaces implements GetPlaces {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPlaces,
     TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
   }) {
     return getPlaces?.call();
   }
@@ -132,6 +140,7 @@ class _$GetPlaces implements GetPlaces {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPlaces,
     TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
     required TResult orElse(),
   }) {
     if (getPlaces != null) {
@@ -145,6 +154,7 @@ class _$GetPlaces implements GetPlaces {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPlaces value) getPlaces,
     required TResult Function(GetFavoritesPlaces value) getFavoritesPlaces,
+    required TResult Function(GetLikedPlaces value) getLikedPlaces,
   }) {
     return getPlaces(this);
   }
@@ -154,6 +164,7 @@ class _$GetPlaces implements GetPlaces {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPlaces value)? getPlaces,
     TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
   }) {
     return getPlaces?.call(this);
   }
@@ -163,6 +174,7 @@ class _$GetPlaces implements GetPlaces {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPlaces value)? getPlaces,
     TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
     required TResult orElse(),
   }) {
     if (getPlaces != null) {
@@ -219,6 +231,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
   TResult when<TResult extends Object?>({
     required TResult Function() getPlaces,
     required TResult Function() getFavoritesPlaces,
+    required TResult Function() getLikedPlaces,
   }) {
     return getFavoritesPlaces();
   }
@@ -228,6 +241,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPlaces,
     TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
   }) {
     return getFavoritesPlaces?.call();
   }
@@ -237,6 +251,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPlaces,
     TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
     required TResult orElse(),
   }) {
     if (getFavoritesPlaces != null) {
@@ -250,6 +265,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPlaces value) getPlaces,
     required TResult Function(GetFavoritesPlaces value) getFavoritesPlaces,
+    required TResult Function(GetLikedPlaces value) getLikedPlaces,
   }) {
     return getFavoritesPlaces(this);
   }
@@ -259,6 +275,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPlaces value)? getPlaces,
     TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
   }) {
     return getFavoritesPlaces?.call(this);
   }
@@ -268,6 +285,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPlaces value)? getPlaces,
     TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
     required TResult orElse(),
   }) {
     if (getFavoritesPlaces != null) {
@@ -282,22 +300,136 @@ abstract class GetFavoritesPlaces implements PlacesEvent {
 }
 
 /// @nodoc
+abstract class _$$GetLikedPlacesCopyWith<$Res> {
+  factory _$$GetLikedPlacesCopyWith(
+          _$GetLikedPlaces value, $Res Function(_$GetLikedPlaces) then) =
+      __$$GetLikedPlacesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetLikedPlacesCopyWithImpl<$Res>
+    extends _$PlacesEventCopyWithImpl<$Res>
+    implements _$$GetLikedPlacesCopyWith<$Res> {
+  __$$GetLikedPlacesCopyWithImpl(
+      _$GetLikedPlaces _value, $Res Function(_$GetLikedPlaces) _then)
+      : super(_value, (v) => _then(v as _$GetLikedPlaces));
+
+  @override
+  _$GetLikedPlaces get _value => super._value as _$GetLikedPlaces;
+}
+
+/// @nodoc
+
+class _$GetLikedPlaces implements GetLikedPlaces {
+  const _$GetLikedPlaces();
+
+  @override
+  String toString() {
+    return 'PlacesEvent.getLikedPlaces()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetLikedPlaces);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPlaces,
+    required TResult Function() getFavoritesPlaces,
+    required TResult Function() getLikedPlaces,
+  }) {
+    return getLikedPlaces();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? getPlaces,
+    TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
+  }) {
+    return getLikedPlaces?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPlaces,
+    TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
+    required TResult orElse(),
+  }) {
+    if (getLikedPlaces != null) {
+      return getLikedPlaces();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPlaces value) getPlaces,
+    required TResult Function(GetFavoritesPlaces value) getFavoritesPlaces,
+    required TResult Function(GetLikedPlaces value) getLikedPlaces,
+  }) {
+    return getLikedPlaces(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetPlaces value)? getPlaces,
+    TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
+  }) {
+    return getLikedPlaces?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPlaces value)? getPlaces,
+    TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
+    required TResult orElse(),
+  }) {
+    if (getLikedPlaces != null) {
+      return getLikedPlaces(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetLikedPlaces implements PlacesEvent {
+  const factory GetLikedPlaces() = _$GetLikedPlaces;
+}
+
+/// @nodoc
 mixin _$PlacesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function() failure,
     required TResult Function(List<Place> places) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? failure,
     TResult Function(List<Place> places)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? failure,
     TResult Function(List<Place> places)? loaded,
     required TResult orElse(),
   }) =>
@@ -305,18 +437,21 @@ mixin _$PlacesState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PlacesLoading value) loading,
+    required TResult Function(PlacesFailure value) failure,
     required TResult Function(PlacesLoaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PlacesLoading value)? loading,
+    TResult Function(PlacesFailure value)? failure,
     TResult Function(PlacesLoaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlacesLoading value)? loading,
+    TResult Function(PlacesFailure value)? failure,
     TResult Function(PlacesLoaded value)? loaded,
     required TResult orElse(),
   }) =>
@@ -381,6 +516,7 @@ class _$PlacesLoading implements PlacesLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function() failure,
     required TResult Function(List<Place> places) loaded,
   }) {
     return loading();
@@ -390,6 +526,7 @@ class _$PlacesLoading implements PlacesLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? failure,
     TResult Function(List<Place> places)? loaded,
   }) {
     return loading?.call();
@@ -399,6 +536,7 @@ class _$PlacesLoading implements PlacesLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? failure,
     TResult Function(List<Place> places)? loaded,
     required TResult orElse(),
   }) {
@@ -412,6 +550,7 @@ class _$PlacesLoading implements PlacesLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PlacesLoading value) loading,
+    required TResult Function(PlacesFailure value) failure,
     required TResult Function(PlacesLoaded value) loaded,
   }) {
     return loading(this);
@@ -421,6 +560,7 @@ class _$PlacesLoading implements PlacesLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PlacesLoading value)? loading,
+    TResult Function(PlacesFailure value)? failure,
     TResult Function(PlacesLoaded value)? loaded,
   }) {
     return loading?.call(this);
@@ -430,6 +570,7 @@ class _$PlacesLoading implements PlacesLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlacesLoading value)? loading,
+    TResult Function(PlacesFailure value)? failure,
     TResult Function(PlacesLoaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -442,6 +583,117 @@ class _$PlacesLoading implements PlacesLoading {
 
 abstract class PlacesLoading implements PlacesState {
   const factory PlacesLoading() = _$PlacesLoading;
+}
+
+/// @nodoc
+abstract class _$$PlacesFailureCopyWith<$Res> {
+  factory _$$PlacesFailureCopyWith(
+          _$PlacesFailure value, $Res Function(_$PlacesFailure) then) =
+      __$$PlacesFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PlacesFailureCopyWithImpl<$Res>
+    extends _$PlacesStateCopyWithImpl<$Res>
+    implements _$$PlacesFailureCopyWith<$Res> {
+  __$$PlacesFailureCopyWithImpl(
+      _$PlacesFailure _value, $Res Function(_$PlacesFailure) _then)
+      : super(_value, (v) => _then(v as _$PlacesFailure));
+
+  @override
+  _$PlacesFailure get _value => super._value as _$PlacesFailure;
+}
+
+/// @nodoc
+
+class _$PlacesFailure implements PlacesFailure {
+  const _$PlacesFailure();
+
+  @override
+  String toString() {
+    return 'PlacesState.failure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PlacesFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function() failure,
+    required TResult Function(List<Place> places) loaded,
+  }) {
+    return failure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? failure,
+    TResult Function(List<Place> places)? loaded,
+  }) {
+    return failure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? failure,
+    TResult Function(List<Place> places)? loaded,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PlacesLoading value) loading,
+    required TResult Function(PlacesFailure value) failure,
+    required TResult Function(PlacesLoaded value) loaded,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PlacesLoading value)? loading,
+    TResult Function(PlacesFailure value)? failure,
+    TResult Function(PlacesLoaded value)? loaded,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PlacesLoading value)? loading,
+    TResult Function(PlacesFailure value)? failure,
+    TResult Function(PlacesLoaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PlacesFailure implements PlacesState {
+  const factory PlacesFailure() = _$PlacesFailure;
 }
 
 /// @nodoc
@@ -513,6 +765,7 @@ class _$PlacesLoaded implements PlacesLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function() failure,
     required TResult Function(List<Place> places) loaded,
   }) {
     return loaded(places);
@@ -522,6 +775,7 @@ class _$PlacesLoaded implements PlacesLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? failure,
     TResult Function(List<Place> places)? loaded,
   }) {
     return loaded?.call(places);
@@ -531,6 +785,7 @@ class _$PlacesLoaded implements PlacesLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function()? failure,
     TResult Function(List<Place> places)? loaded,
     required TResult orElse(),
   }) {
@@ -544,6 +799,7 @@ class _$PlacesLoaded implements PlacesLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PlacesLoading value) loading,
+    required TResult Function(PlacesFailure value) failure,
     required TResult Function(PlacesLoaded value) loaded,
   }) {
     return loaded(this);
@@ -553,6 +809,7 @@ class _$PlacesLoaded implements PlacesLoaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PlacesLoading value)? loading,
+    TResult Function(PlacesFailure value)? failure,
     TResult Function(PlacesLoaded value)? loaded,
   }) {
     return loaded?.call(this);
@@ -562,6 +819,7 @@ class _$PlacesLoaded implements PlacesLoaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlacesLoading value)? loading,
+    TResult Function(PlacesFailure value)? failure,
     TResult Function(PlacesLoaded value)? loaded,
     required TResult orElse(),
   }) {
