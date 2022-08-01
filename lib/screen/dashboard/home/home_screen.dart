@@ -9,6 +9,7 @@ import 'package:lottie/lottie.dart';
 import 'package:turiba/injection.dart';
 import 'package:turiba/screen/auth/models/user.dart';
 import 'package:turiba/screen/dashboard/home/model/place.dart';
+import 'package:turiba/screen/dashboard/home/place_detail.dart';
 import 'package:turiba/screen/dashboard/home/places_bloc/places_bloc.dart';
 import 'package:turiba/screen/dashboard/profile/profile_bloc/profile_bloc.dart';
 import 'package:turiba/screen/dashboard/profile/profile_screen.dart';
@@ -121,9 +122,10 @@ class Profile extends StatelessWidget {
             },
             child: Row(
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 24,
                   backgroundColor: AppColors.greyColor,
+                  backgroundImage: NetworkImage(user!.photo),
                 ),
                 wSizedBox10,
                 Column(
@@ -187,58 +189,67 @@ class ListPlaces extends StatelessWidget {
               itemCount: loaded.places.length,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 4,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            loaded.places[index].image,
-                            height: Get.height * 0.15,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                return InkWell(
+                  onTap: () {
+                    Get.to(
+                      () => PlaceDetail(
+                        place: loaded.places[index],
                       ),
-                      Expanded(
-                        flex: 5,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 12),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              hSizedBox10,
-                              Text(
-                                loaded.places[index].name,
-                                maxLines: 3,
-                                style: textStyleLato(fontSize: 15),
-                              ),
-                              hSizedBox16,
-                              RatingBar.builder(
-                                initialRating:
-                                    loaded.places[index].stars.toDouble(),
-                                minRating: 1,
-                                direction: Axis.horizontal,
-                                allowHalfRating: false,
-                                itemSize: 15,
-                                itemCount: 5,
-                                itemPadding:
-                                    const EdgeInsets.symmetric(horizontal: 0),
-                                itemBuilder: (context, _) => const Icon(
-                                  Icons.star,
-                                  color: Color(0xFFD5853B),
-                                ),
-                                onRatingUpdate: (rating) {},
-                              )
-                            ],
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.network(
+                              loaded.places[index].image,
+                              height: Get.height * 0.15,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      )
-                    ],
+                        Expanded(
+                          flex: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                hSizedBox10,
+                                Text(
+                                  loaded.places[index].name,
+                                  maxLines: 3,
+                                  style: textStyleLato(fontSize: 15),
+                                ),
+                                hSizedBox16,
+                                RatingBar.builder(
+                                  initialRating:
+                                      loaded.places[index].stars.toDouble(),
+                                  minRating: 1,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: false,
+                                  itemSize: 15,
+                                  itemCount: 5,
+                                  itemPadding:
+                                      const EdgeInsets.symmetric(horizontal: 0),
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: Color(0xFFD5853B),
+                                  ),
+                                  onRatingUpdate: (rating) {},
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 );
               },
@@ -281,11 +292,20 @@ class Slider extends StatelessWidget {
             loaded: (loaded) => CarouselSlider(
               items: List.generate(
                 loaded.places.length,
-                (index) => ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                    loaded.places[index].image,
-                    fit: BoxFit.cover,
+                (index) => InkWell(
+                  onTap: () {
+                    Get.to(
+                      () => PlaceDetail(
+                        place: loaded.places[index],
+                      ),
+                    );
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.network(
+                      loaded.places[index].image,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:turiba/screen/auth/auth_bloc/auth_bloc.dart';
 import 'package:turiba/utils/app_color.dart';
 import 'package:turiba/utils/app_string.dart';
 import 'package:turiba/utils/sizedbox.dart';
 import 'package:turiba/utils/text_style.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../auth/models/user.dart';
 import '../home/model/place.dart';
 
@@ -22,35 +22,38 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<AuthBloc>().add(
+                    const AuthEvent.logOut(),
+                  );
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                "/login",
+                (_) => false,
+              );
+            },
+            icon: const Icon(
+              Icons.logout,
+            ),
+          )
+        ],
+      ),
       backgroundColor: AppColors.appBlackColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 6, right: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      color: const Color(0xFFD5853B),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(
-                        Icons.chevron_left,
-                        size: 40,
-                        color: Color(0xFFD5853B),
-                      ),
-                    ),
-                    SvgPicture.asset("assets/svg/edit.svg")
-                  ],
-                ),
-              ),
               hSizedBox14,
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 60,
                 backgroundColor: AppColors.greyColor,
+                backgroundImage: NetworkImage(user!.photo),
               ),
               hSizedBox16,
               Text(

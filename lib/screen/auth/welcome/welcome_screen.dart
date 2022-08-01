@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:turiba/screen/auth/login/login_screen.dart';
 import 'package:turiba/screen/auth/onboarding/onboarding_screen.dart';
 import 'package:turiba/utils/app_color.dart';
 import 'package:turiba/utils/app_images.dart';
@@ -63,6 +64,7 @@ class WelcomeScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 HapticFeedback.heavyImpact();
+                Get.to(() => const LoginScreen());
               },
               child: Text(
                 AppString.skip,

@@ -24,7 +24,7 @@ void main() async {
   await Hive.openBox('auth');
   await Firebase.initializeApp(
     options: DefaultFirebaseConfig.platformOptions,
-    name: 'turiba-d29c8',
+    name: 'turiba-18387',
   );
   runApp(const MyApp());
 }

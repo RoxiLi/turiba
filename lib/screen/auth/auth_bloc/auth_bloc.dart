@@ -21,7 +21,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     emit(const AuthState.loading());
     final isLogged = _authRepository.isSignedInUser();
-    if (!isLogged) {
+    if (isLogged) {
       emit(const AuthState.authenticated());
     } else {
       emit(const AuthState.notAuthenticated());

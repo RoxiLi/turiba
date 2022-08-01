@@ -51,8 +51,8 @@ class LoginScreen extends StatelessWidget {
                   BlocConsumer<LoginBloc, LoginState>(
                     listener: (context, state) {
                       final bloc = context.read<AuthBloc>();
-                      void goToSplash() {
-                        Navigator.pushReplacementNamed(context, "/splash");
+                      void goToHome() {
+                        Navigator.pushReplacementNamed(context, "/home");
                       }
 
                       state.loginOrFailureOption.fold(
@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                               true,
                             );
                             bloc.add(const AuthEvent.checkAuth());
-                            goToSplash();
+                            goToHome();
                           },
                         ),
                       );
