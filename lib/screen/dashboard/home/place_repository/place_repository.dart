@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:turiba/screen/dashboard/home/model/place.dart';
 import 'package:turiba/core/failure.dart';
@@ -20,7 +19,8 @@ class PlaceRespository extends IPlaceRepository {
       final snapshot = await placeReference.get();
       return right(
         snapshot.docs
-            .map((doc) => Place.fromJson(doc.data() as Map<String, dynamic>))
+            .map((doc) =>
+                Place.fromJson(doc.data() as Map<String, dynamic>, doc.id))
             .toList(),
       );
     } catch (e) {
@@ -36,7 +36,8 @@ class PlaceRespository extends IPlaceRepository {
       final snapshot = await query.get();
       return right(
         snapshot.docs
-            .map((doc) => Place.fromJson(doc.data() as Map<String, dynamic>))
+            .map((doc) =>
+                Place.fromJson(doc.data() as Map<String, dynamic>, doc.id))
             .toList(),
       );
     } catch (e) {
@@ -48,18 +49,52 @@ class PlaceRespository extends IPlaceRepository {
   Future<Either<Failure, List<Place>>> getLikedPlaces() async {
     try {
       final userRef = await _firebaseFirestore.userDocument();
-      var box = await Hive.openBox('testBox');
-      final userId = box.get("userId");
-      final likedPlaceReference =
-          userRef.usersCollection.doc(userId).likedPlacesCollection;
+      final likedPlaceReference = userRef.likedPlacesCollection;
       final snapshot = await likedPlaceReference.get();
       return right(
         snapshot.docs
-            .map((doc) => Place.fromJson(doc.data() as Map<String, dynamic>))
+            .map((doc) =>
+                Place.fromJson(doc.data() as Map<String, dynamic>, doc.id))
             .toList(),
       );
     } catch (e) {
       return left(const Failure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> likePlace({
+    required Place place,
+  }) async {
+    try {
+      final newLikes = place.likes + 1;
+      final placeRef = _firebaseFirestore.placeDocument().doc(place.id);
+      final userRef = await _firebaseFirestore.userDocument();
+      final likedPlacesDoc = userRef.likedPlacesCollection.doc(place.id);
+      final batch = _firebaseFirestore.batch();
+      batch.update(placeRef, {"likes": newLikes});
+      batch.set(likedPlacesDoc, place.toJson());
+      batch.commit();
+      return right(unit);
+    } catch (e) {
+      return left(const Failure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> unLikePlace({required Place place}) async {
+    try {
+      final newLikes = place.likes - 1;
+      final placeRef = _firebaseFirestore.placeDocument().doc(place.id);
+      final userRef = await _firebaseFirestore.userDocument();
+      final likedPlacesDoc = userRef.likedPlacesCollection.doc(place.id);
+      final batch = _firebaseFirestore.batch();
+      batch.update(placeRef, {"likes": newLikes});
+      batch.delete(likedPlacesDoc);
+      batch.commit();
+      return right(unit);
+    } catch (e) {
+      return left(const Failure.serverError());
     }
   }
 }

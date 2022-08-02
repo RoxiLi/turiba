@@ -114,10 +114,7 @@ class Profile extends StatelessWidget {
           InkWell(
             onTap: () {
               Get.to(
-                () => ProfileScreen(
-                  user: user,
-                  places: places,
-                ),
+                () => const ProfileScreen(),
               );
             },
             child: Row(
@@ -146,8 +143,7 @@ class Profile extends StatelessWidget {
           const Spacer(),
           SvgPicture.asset(
             AppImages.search,
-            height: 25,
-            width: 25,
+            height: 20,
           )
         ],
       ),
@@ -243,7 +239,16 @@ class ListPlaces extends StatelessWidget {
                                     color: Color(0xFFD5853B),
                                   ),
                                   onRatingUpdate: (rating) {},
-                                )
+                                ),
+                                hSizedBox10,
+                                Text(
+                                  loaded.places[index].description,
+                                  maxLines: 3,
+                                  style: textStyleLato(
+                                    fontSize: 12,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ],
                             ),
                           ),

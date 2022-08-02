@@ -32,17 +32,20 @@ class AuthRepository extends IAuthRepository {
 
       final authResult =
           await _firebaseAuth.signInWithCredential(authCredential);
-
-      final userDoc = await _firestore.userDocument();
-      final batch = _firestore.batch();
       final user = UserModel(
         id: authResult.user!.uid,
         name: authResult.user?.displayName ?? "",
         photo: authResult.user?.photoURL ?? "",
         email: authResult.user?.email ?? "",
       );
-      batch.set(userDoc, user.toJson());
-      batch.commit();
+      if (authResult.additionalUserInfo!.isNewUser) {
+        final userDoc = await _firestore.userDocument();
+        final batch = _firestore.batch();
+
+        batch.set(userDoc, user.toJson());
+        batch.commit();
+      }
+
       return right(user);
     } on FirebaseAuthException catch (_) {
       return left(const Failure.serverError());

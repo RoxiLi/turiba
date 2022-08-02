@@ -6,4 +6,10 @@ abstract class IPlaceRepository {
   Future<Either<Failure, List<Place>>> getPlaces();
   Future<Either<Failure, List<Place>>> getLikedPlaces();
   Future<Either<Failure, List<Place>>> getFavoritesPlaces();
+  Future<Either<Failure, Unit>> likePlace({
+    required Place place,
+  });
+  Future<Either<Failure, Unit>> unLikePlace({
+    required Place place,
+  });
 }

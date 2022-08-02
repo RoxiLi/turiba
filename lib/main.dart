@@ -8,8 +8,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:turiba/injection.dart';
 import 'package:turiba/screen/auth/auth_bloc/auth_bloc.dart';
-import 'package:turiba/utils/firebase_config.dart';
 
+import 'firebase_options.dart';
 import 'screen/core/routes.dart';
 
 void main() async {
@@ -23,8 +23,7 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('auth');
   await Firebase.initializeApp(
-    options: DefaultFirebaseConfig.platformOptions,
-    name: 'turiba-18387',
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
 }

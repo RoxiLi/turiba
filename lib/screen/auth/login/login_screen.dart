@@ -111,8 +111,14 @@ class LoginScreen extends StatelessWidget {
                                           ),
                                         ),
                                       )
-                                    : const CircularProgressIndicator
-                                        .adaptive(),
+                                    : const Center(
+                                        child: SizedBox(
+                                          height: 40,
+                                          width: 40,
+                                          child: CircularProgressIndicator
+                                              .adaptive(),
+                                        ),
+                                      ),
                               ),
                             ),
                           ),
