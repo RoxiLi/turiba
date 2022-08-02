@@ -11,16 +11,17 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'core/firebase_injectable_module.dart' as _i14;
-import 'screen/auth/auth_bloc/auth_bloc.dart' as _i13;
+import 'core/firebase_injectable_module.dart' as _i15;
+import 'screen/auth/auth_bloc/auth_bloc.dart' as _i14;
 import 'screen/auth/auth_repository/auth_repository.dart' as _i7;
 import 'screen/auth/auth_repository/i_auth_repository.dart' as _i6;
 import 'screen/auth/login/login_bloc/login_bloc.dart' as _i10;
 import 'screen/dashboard/home/place_repository/i_place_repository.dart' as _i8;
 import 'screen/dashboard/home/place_repository/place_repository.dart' as _i9;
 import 'screen/dashboard/home/places_bloc/places_bloc.dart' as _i11;
-import 'screen/dashboard/profile/profile_bloc/profile_bloc.dart'
-    as _i12; // ignore_for_file: unnecessary_lambdas
+import 'screen/dashboard/profile/profile_bloc/profile_bloc.dart' as _i12;
+import 'screen/dashboard/search/search_bloc/search_bloc.dart'
+    as _i13; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -45,8 +46,10 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i11.PlacesBloc(get<_i8.IPlaceRepository>()));
   gh.factory<_i12.ProfileBloc>(() => _i12.ProfileBloc(
       get<_i6.IAuthRepository>(), get<_i8.IPlaceRepository>()));
-  gh.factory<_i13.AuthBloc>(() => _i13.AuthBloc(get<_i6.IAuthRepository>()));
+  gh.factory<_i13.SearchBloc>(
+      () => _i13.SearchBloc(get<_i8.IPlaceRepository>()));
+  gh.factory<_i14.AuthBloc>(() => _i14.AuthBloc(get<_i6.IAuthRepository>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i14.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i15.FirebaseInjectableModule {}

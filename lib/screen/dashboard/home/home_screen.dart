@@ -141,9 +141,17 @@ class Profile extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          SvgPicture.asset(
-            AppImages.search,
-            height: 20,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                "/search",
+              );
+            },
+            child: SvgPicture.asset(
+              AppImages.search,
+              height: 20,
+            ),
           )
         ],
       ),

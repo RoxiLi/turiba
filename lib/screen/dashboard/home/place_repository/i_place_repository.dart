@@ -12,4 +12,6 @@ abstract class IPlaceRepository {
   Future<Either<Failure, Unit>> unLikePlace({
     required Place place,
   });
+  Future<Either<Failure, List<Place>>> search(
+      {required String name, required List<String> topics});
 }

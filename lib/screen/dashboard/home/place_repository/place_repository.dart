@@ -97,4 +97,24 @@ class PlaceRespository extends IPlaceRepository {
       return left(const Failure.serverError());
     }
   }
+
+  @override
+  Future<Either<Failure, List<Place>>> search({
+    required String name,
+    required List<String> topics,
+  }) async {
+    try {
+      final placeRef = _firebaseFirestore.placeDocument();
+      final query = placeRef.where('topics', arrayContainsAny: topics);
+      final snapshot = await query.get();
+      return right(
+        snapshot.docs
+            .map((doc) =>
+                Place.fromJson(doc.data() as Map<String, dynamic>, doc.id))
+            .toList(),
+      );
+    } catch (e) {
+      return left(const Failure.serverError());
+    }
+  }
 }
