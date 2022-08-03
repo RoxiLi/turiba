@@ -142,12 +142,12 @@ class PlaceDetail extends StatelessWidget {
                     },
                   ),
                   IconButtonCustom(
-                    icon: Icons.running_with_errors_sharp,
+                    icon: Icons.follow_the_signs,
                     text: "Caminata",
                     onTap: () {},
                   ),
                   IconButtonCustom(
-                    icon: Icons.running_with_errors_sharp,
+                    icon: Icons.run_circle_outlined,
                     text: "Caminata",
                     onTap: () {},
                   )
