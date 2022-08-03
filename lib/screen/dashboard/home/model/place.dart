@@ -33,12 +33,12 @@ class Place {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "name": name,
         "stars": stars,
         "likes": likes,
         "description": description,
         "image": image,
         "topics": List<dynamic>.from(topics.map((x) => x)),
+        "location": geoPoint
       };
 }

@@ -60,17 +60,24 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const Spacer(),
-            InkWell(
-              onTap: () {
-                HapticFeedback.heavyImpact();
-                Get.to(() => const LoginScreen());
-              },
-              child: Text(
-                AppString.skip,
-                style: textStyleAbel(
-                  fontSize: 18,
-                  color: AppColors.white,
+            const SizedBox(height: 40),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 35),
+              height: 40,
+              width: double.infinity,
+              child: InkWell(
+                onTap: () {
+                  HapticFeedback.heavyImpact();
+                  Get.to(() => const LoginScreen());
+                },
+                child: Center(
+                  child: Text(
+                    AppString.skip,
+                    style: textStyleAbel(
+                      fontSize: 18,
+                      color: AppColors.white,
+                    ),
+                  ),
                 ),
               ),
             ),

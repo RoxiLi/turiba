@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,7 @@ import 'package:turiba/screen/dashboard/home/place_detail.dart';
 import 'package:turiba/screen/dashboard/home/places_bloc/places_bloc.dart';
 import 'package:turiba/screen/dashboard/profile/profile_bloc/profile_bloc.dart';
 import 'package:turiba/screen/dashboard/profile/profile_screen.dart';
+import 'package:turiba/screen/dashboard/vr/vr_screen.dart';
 import 'package:turiba/utils/app_color.dart';
 import 'package:turiba/utils/app_images.dart';
 import 'package:turiba/utils/app_string.dart';
@@ -57,10 +59,33 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     const Slider(),
                     hSizedBox16,
-                    Center(
-                      child: Image.asset(
-                        "assets/images/camera.png",
-                        height: Get.height * 0.075,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VrScreen(
+                              place: Place(
+                                name: "Latacunga",
+                                stars: 5,
+                                likes: 2,
+                                description:
+                                    "Latacunga, también conocida como San Vicente Mártir de Latacunga, es una ciudad ecuatoriana; cabecera cantonal del Cantón Latacunga y capital de la Provincia de Cotopaxi, así como la urbe más grande y poblada de la misma.",
+                                topics: [],
+                                image:
+                                    "https://ec.viajandox.com/uploads/min_attractive_2409.jpg",
+                                id: "1",
+                                geoPoint: const GeoPoint(90, 78),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Center(
+                        child: Image.asset(
+                          "assets/images/camera.png",
+                          height: Get.height * 0.075,
+                        ),
                       ),
                     ),
                     hSizedBox12,

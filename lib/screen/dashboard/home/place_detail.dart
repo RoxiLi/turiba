@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:open_url/open_url.dart';
 import 'package:turiba/injection.dart';
 import 'package:turiba/screen/dashboard/home/places_bloc/places_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/app_color.dart';
 import '../../../utils/sizedbox.dart';
@@ -135,9 +135,10 @@ class PlaceDetail extends StatelessWidget {
                     icon: Icons.map,
                     text: "Como llegar",
                     onTap: () async {
-                      String googleUrl =
-                          'https://www.google.com/maps/search/?api=1&query=${place.geoPoint.latitude},${place.geoPoint.longitude}';
-                      await openUrl(googleUrl);
+                      Uri googleUrl = Uri.parse(
+                        'https://www.google.com/maps/search/?api=1&query=${place.geoPoint.latitude},${place.geoPoint.longitude}',
+                      );
+                      await launchUrl(googleUrl);
                     },
                   ),
                   IconButtonCustom(

@@ -28,11 +28,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       (_) => emit(const SearchState.failure()),
       (places) {
         if (event.name.isNotEmpty) {
-          final filterByName =
-              places.where((place) => place.name.contains(event.name)).toList();
+          final filterByName = places
+              .where((place) =>
+                  place.name.toLowerCase().contains(event.name.toLowerCase()))
+              .toList();
           emit(SearchState.loaded(places: filterByName));
-        } else {
+        } else if (event.topics.isNotEmpty) {
           emit(SearchState.loaded(places: places));
+        } else {
+          emit(const SearchState.loaded(places: []));
         }
       },
     );
