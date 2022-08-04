@@ -18,6 +18,7 @@ class PlacesBloc extends Bloc<PlacesEvent, PlacesState> {
     on<GetLikedPlaces>(_onGetLikedPlaces);
     on<LikePlace>(_onLikePlace);
     on<UnLikePlace>(_onUnLikePlace);
+    on<GetRecomendations>(_onGetRecomendations);
   }
 
   Future<void> _onLikePlace(
@@ -76,6 +77,18 @@ class PlacesBloc extends Bloc<PlacesEvent, PlacesState> {
   ) async {
     emit(const PlacesState.loading());
     final failureOrPlaces = await _placeRepository.getLikedPlaces();
+    failureOrPlaces.fold(
+      (_) => emit(const PlacesState.failure()),
+      (places) => emit(PlacesState.loaded(places: places)),
+    );
+  }
+
+  Future<void> _onGetRecomendations(
+    GetRecomendations event,
+    Emitter<PlacesState> emit,
+  ) async {
+    emit(const PlacesState.loading());
+    final failureOrPlaces = await _placeRepository.getRecomendations();
     failureOrPlaces.fold(
       (_) => emit(const PlacesState.failure()),
       (places) => emit(PlacesState.loaded(places: places)),

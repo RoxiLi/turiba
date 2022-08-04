@@ -23,6 +23,7 @@ mixin _$PlacesEvent {
     required TResult Function() getLikedPlaces,
     required TResult Function(Place place) likePlace,
     required TResult Function(Place place) unLikePlace,
+    required TResult Function() getRecomendations,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$PlacesEvent {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$PlacesEvent {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$PlacesEvent {
     required TResult Function(GetLikedPlaces value) getLikedPlaces,
     required TResult Function(LikePlace value) likePlace,
     required TResult Function(UnLikePlace value) unLikePlace,
+    required TResult Function(GetRecomendations value) getRecomendations,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$PlacesEvent {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$PlacesEvent {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$GetPlaces implements GetPlaces {
     required TResult Function() getLikedPlaces,
     required TResult Function(Place place) likePlace,
     required TResult Function(Place place) unLikePlace,
+    required TResult Function() getRecomendations,
   }) {
     return getPlaces();
   }
@@ -147,6 +154,7 @@ class _$GetPlaces implements GetPlaces {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
   }) {
     return getPlaces?.call();
   }
@@ -159,6 +167,7 @@ class _$GetPlaces implements GetPlaces {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
     required TResult orElse(),
   }) {
     if (getPlaces != null) {
@@ -175,6 +184,7 @@ class _$GetPlaces implements GetPlaces {
     required TResult Function(GetLikedPlaces value) getLikedPlaces,
     required TResult Function(LikePlace value) likePlace,
     required TResult Function(UnLikePlace value) unLikePlace,
+    required TResult Function(GetRecomendations value) getRecomendations,
   }) {
     return getPlaces(this);
   }
@@ -187,6 +197,7 @@ class _$GetPlaces implements GetPlaces {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
   }) {
     return getPlaces?.call(this);
   }
@@ -199,6 +210,7 @@ class _$GetPlaces implements GetPlaces {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
     required TResult orElse(),
   }) {
     if (getPlaces != null) {
@@ -258,6 +270,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
     required TResult Function() getLikedPlaces,
     required TResult Function(Place place) likePlace,
     required TResult Function(Place place) unLikePlace,
+    required TResult Function() getRecomendations,
   }) {
     return getFavoritesPlaces();
   }
@@ -270,6 +283,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
   }) {
     return getFavoritesPlaces?.call();
   }
@@ -282,6 +296,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
     required TResult orElse(),
   }) {
     if (getFavoritesPlaces != null) {
@@ -298,6 +313,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
     required TResult Function(GetLikedPlaces value) getLikedPlaces,
     required TResult Function(LikePlace value) likePlace,
     required TResult Function(UnLikePlace value) unLikePlace,
+    required TResult Function(GetRecomendations value) getRecomendations,
   }) {
     return getFavoritesPlaces(this);
   }
@@ -310,6 +326,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
   }) {
     return getFavoritesPlaces?.call(this);
   }
@@ -322,6 +339,7 @@ class _$GetFavoritesPlaces implements GetFavoritesPlaces {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
     required TResult orElse(),
   }) {
     if (getFavoritesPlaces != null) {
@@ -381,6 +399,7 @@ class _$GetLikedPlaces implements GetLikedPlaces {
     required TResult Function() getLikedPlaces,
     required TResult Function(Place place) likePlace,
     required TResult Function(Place place) unLikePlace,
+    required TResult Function() getRecomendations,
   }) {
     return getLikedPlaces();
   }
@@ -393,6 +412,7 @@ class _$GetLikedPlaces implements GetLikedPlaces {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
   }) {
     return getLikedPlaces?.call();
   }
@@ -405,6 +425,7 @@ class _$GetLikedPlaces implements GetLikedPlaces {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
     required TResult orElse(),
   }) {
     if (getLikedPlaces != null) {
@@ -421,6 +442,7 @@ class _$GetLikedPlaces implements GetLikedPlaces {
     required TResult Function(GetLikedPlaces value) getLikedPlaces,
     required TResult Function(LikePlace value) likePlace,
     required TResult Function(UnLikePlace value) unLikePlace,
+    required TResult Function(GetRecomendations value) getRecomendations,
   }) {
     return getLikedPlaces(this);
   }
@@ -433,6 +455,7 @@ class _$GetLikedPlaces implements GetLikedPlaces {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
   }) {
     return getLikedPlaces?.call(this);
   }
@@ -445,6 +468,7 @@ class _$GetLikedPlaces implements GetLikedPlaces {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
     required TResult orElse(),
   }) {
     if (getLikedPlaces != null) {
@@ -527,6 +551,7 @@ class _$LikePlace implements LikePlace {
     required TResult Function() getLikedPlaces,
     required TResult Function(Place place) likePlace,
     required TResult Function(Place place) unLikePlace,
+    required TResult Function() getRecomendations,
   }) {
     return likePlace(place);
   }
@@ -539,6 +564,7 @@ class _$LikePlace implements LikePlace {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
   }) {
     return likePlace?.call(place);
   }
@@ -551,6 +577,7 @@ class _$LikePlace implements LikePlace {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
     required TResult orElse(),
   }) {
     if (likePlace != null) {
@@ -567,6 +594,7 @@ class _$LikePlace implements LikePlace {
     required TResult Function(GetLikedPlaces value) getLikedPlaces,
     required TResult Function(LikePlace value) likePlace,
     required TResult Function(UnLikePlace value) unLikePlace,
+    required TResult Function(GetRecomendations value) getRecomendations,
   }) {
     return likePlace(this);
   }
@@ -579,6 +607,7 @@ class _$LikePlace implements LikePlace {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
   }) {
     return likePlace?.call(this);
   }
@@ -591,6 +620,7 @@ class _$LikePlace implements LikePlace {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
     required TResult orElse(),
   }) {
     if (likePlace != null) {
@@ -678,6 +708,7 @@ class _$UnLikePlace implements UnLikePlace {
     required TResult Function() getLikedPlaces,
     required TResult Function(Place place) likePlace,
     required TResult Function(Place place) unLikePlace,
+    required TResult Function() getRecomendations,
   }) {
     return unLikePlace(place);
   }
@@ -690,6 +721,7 @@ class _$UnLikePlace implements UnLikePlace {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
   }) {
     return unLikePlace?.call(place);
   }
@@ -702,6 +734,7 @@ class _$UnLikePlace implements UnLikePlace {
     TResult Function()? getLikedPlaces,
     TResult Function(Place place)? likePlace,
     TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
     required TResult orElse(),
   }) {
     if (unLikePlace != null) {
@@ -718,6 +751,7 @@ class _$UnLikePlace implements UnLikePlace {
     required TResult Function(GetLikedPlaces value) getLikedPlaces,
     required TResult Function(LikePlace value) likePlace,
     required TResult Function(UnLikePlace value) unLikePlace,
+    required TResult Function(GetRecomendations value) getRecomendations,
   }) {
     return unLikePlace(this);
   }
@@ -730,6 +764,7 @@ class _$UnLikePlace implements UnLikePlace {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
   }) {
     return unLikePlace?.call(this);
   }
@@ -742,6 +777,7 @@ class _$UnLikePlace implements UnLikePlace {
     TResult Function(GetLikedPlaces value)? getLikedPlaces,
     TResult Function(LikePlace value)? likePlace,
     TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
     required TResult orElse(),
   }) {
     if (unLikePlace != null) {
@@ -758,6 +794,135 @@ abstract class UnLikePlace implements PlacesEvent {
   @JsonKey(ignore: true)
   _$$UnLikePlaceCopyWith<_$UnLikePlace> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetRecomendationsCopyWith<$Res> {
+  factory _$$GetRecomendationsCopyWith(
+          _$GetRecomendations value, $Res Function(_$GetRecomendations) then) =
+      __$$GetRecomendationsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetRecomendationsCopyWithImpl<$Res>
+    extends _$PlacesEventCopyWithImpl<$Res>
+    implements _$$GetRecomendationsCopyWith<$Res> {
+  __$$GetRecomendationsCopyWithImpl(
+      _$GetRecomendations _value, $Res Function(_$GetRecomendations) _then)
+      : super(_value, (v) => _then(v as _$GetRecomendations));
+
+  @override
+  _$GetRecomendations get _value => super._value as _$GetRecomendations;
+}
+
+/// @nodoc
+
+class _$GetRecomendations implements GetRecomendations {
+  const _$GetRecomendations();
+
+  @override
+  String toString() {
+    return 'PlacesEvent.getRecomendations()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetRecomendations);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPlaces,
+    required TResult Function() getFavoritesPlaces,
+    required TResult Function() getLikedPlaces,
+    required TResult Function(Place place) likePlace,
+    required TResult Function(Place place) unLikePlace,
+    required TResult Function() getRecomendations,
+  }) {
+    return getRecomendations();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? getPlaces,
+    TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
+    TResult Function(Place place)? likePlace,
+    TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
+  }) {
+    return getRecomendations?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPlaces,
+    TResult Function()? getFavoritesPlaces,
+    TResult Function()? getLikedPlaces,
+    TResult Function(Place place)? likePlace,
+    TResult Function(Place place)? unLikePlace,
+    TResult Function()? getRecomendations,
+    required TResult orElse(),
+  }) {
+    if (getRecomendations != null) {
+      return getRecomendations();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPlaces value) getPlaces,
+    required TResult Function(GetFavoritesPlaces value) getFavoritesPlaces,
+    required TResult Function(GetLikedPlaces value) getLikedPlaces,
+    required TResult Function(LikePlace value) likePlace,
+    required TResult Function(UnLikePlace value) unLikePlace,
+    required TResult Function(GetRecomendations value) getRecomendations,
+  }) {
+    return getRecomendations(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetPlaces value)? getPlaces,
+    TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
+    TResult Function(LikePlace value)? likePlace,
+    TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
+  }) {
+    return getRecomendations?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPlaces value)? getPlaces,
+    TResult Function(GetFavoritesPlaces value)? getFavoritesPlaces,
+    TResult Function(GetLikedPlaces value)? getLikedPlaces,
+    TResult Function(LikePlace value)? likePlace,
+    TResult Function(UnLikePlace value)? unLikePlace,
+    TResult Function(GetRecomendations value)? getRecomendations,
+    required TResult orElse(),
+  }) {
+    if (getRecomendations != null) {
+      return getRecomendations(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetRecomendations implements PlacesEvent {
+  const factory GetRecomendations() = _$GetRecomendations;
 }
 
 /// @nodoc

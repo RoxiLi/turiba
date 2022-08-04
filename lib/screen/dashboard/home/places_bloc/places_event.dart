@@ -7,4 +7,5 @@ class PlacesEvent with _$PlacesEvent {
   const factory PlacesEvent.getLikedPlaces() = GetLikedPlaces;
   const factory PlacesEvent.likePlace({required Place place}) = LikePlace;
   const factory PlacesEvent.unLikePlace({required Place place}) = UnLikePlace;
+  const factory PlacesEvent.getRecomendations() = GetRecomendations;
 }

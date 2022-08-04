@@ -57,45 +57,47 @@ class _VrScreenState extends State<VrScreen> {
         elevation: 0,
         centerTitle: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const Text(
-              "Enfoca el sitio en donde te encuentras",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 28.0),
-                  child: AspectRatio(
-                    aspectRatio: 1 / 1.8,
-                    child: cameras.isNotEmpty
-                        ? CameraPreview(
-                            controller,
-                          )
-                        : Container(),
-                  ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const Text(
+                "Enfoca el sitio en donde te encuentras",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
-                Positioned(
-                  top: 500,
-                  left: 10,
-                  child: SizedBox(
-                    height: 150,
-                    width: 340,
-                    child: PlaceWidget(
-                      place: widget.place,
+              ),
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 28.0),
+                    child: AspectRatio(
+                      aspectRatio: 1 / 1.8,
+                      child: cameras.isNotEmpty
+                          ? CameraPreview(
+                              controller,
+                            )
+                          : Container(),
                     ),
                   ),
-                )
-              ],
-            ),
-          ],
+                  Positioned(
+                    top: MediaQuery.of(context).size.height * 0.6,
+                    left: 10,
+                    child: SizedBox(
+                      height: 150,
+                      width: 340,
+                      child: PlaceWidget(
+                        place: widget.place,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

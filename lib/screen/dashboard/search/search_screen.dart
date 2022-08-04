@@ -4,6 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:turiba/injection.dart';
+import 'package:turiba/screen/dashboard/home/place_detail.dart';
 import 'package:turiba/screen/dashboard/search/search_bloc/search_bloc.dart';
 
 import '../../../utils/app_color.dart';
@@ -23,7 +24,7 @@ class _SearchScreenState extends State<SearchScreen> {
   String filterName = "";
   @override
   Widget build(BuildContext context) {
-    final list = ["Casadas", "Rios", "Puentes"];
+    final list = ["Casadas", "Rios", "Puentes", "montaña"];
     return Scaffold(
       appBar: AppBar(
         title: const Text("Buscar"),
@@ -198,14 +199,20 @@ class PlaceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.to(
+          () => PlaceDetail(
+            place: place,
+          ),
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              flex: 4,
+              flex: 3,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(

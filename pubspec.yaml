@@ -30,8 +30,6 @@ dependencies:
   connectivity_plus: ^2.3.5
   ## Login with Google
   google_sign_in: ^5.3.3
-  ## Login with Facebook
-  flutter_facebook_auth: ^4.3.4+2
   ## Show Toast
   fluttertoast: ^8.0.9
   ## Carousel Slider

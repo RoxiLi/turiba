@@ -67,8 +67,6 @@ class LoginScreen extends StatelessWidget {
                             false,
                           ),
                           (user) async {
-                            var box = await Hive.openBox('auth');
-                            box.put('userId', user.id);
                             toast(
                               "Bienvenido ${user.name}",
                               true,

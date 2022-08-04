@@ -14,4 +14,6 @@ abstract class IPlaceRepository {
   });
   Future<Either<Failure, List<Place>>> search(
       {required String name, required List<String> topics});
+
+  Future<Either<Failure, List<Place>>> getRecomendations();
 }

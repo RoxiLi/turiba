@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                                 stars: 5,
                                 likes: 2,
                                 description:
-                                    "Latacunga, también conocida como San Vicente Mártir de Latacunga, es una ciudad ecuatoriana; cabecera cantonal del Cantón Latacunga y capital de la Provincia de Cotopaxi, así como la urbe más grande y poblada de la misma.",
+                                    "Latacunga, también conocida como San Vicente Mártir de Latacunga, es una ciudad ecuatoriana; cabecera cantonal del Cantón Latacunga y capital de la Provincia de Cotopaxi, así como la urbe más grande y poblada de la misma. ",
                                 topics: [],
                                 image:
                                     "https://ec.viajandox.com/uploads/min_attractive_2409.jpg",
@@ -100,6 +100,8 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          const ListRecomendations(),
+                          hSizedBox14,
                           Text(
                             AppString.favoriteCircuits,
                             style: textStyleLato(fontSize: 20),
@@ -239,6 +241,7 @@ class ListPlaces extends StatelessWidget {
                               loaded.places[index].image,
                               height: Get.height * 0.15,
                               fit: BoxFit.cover,
+                              color: AppColors.background,
                             ),
                           ),
                         ),
@@ -292,6 +295,147 @@ class ListPlaces extends StatelessWidget {
                 );
               },
             ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ListRecomendations extends StatelessWidget {
+  const ListRecomendations({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<PlacesBloc>()
+        ..add(
+          const PlacesEvent.getRecomendations(),
+        ),
+      child: BlocBuilder<PlacesBloc, PlacesState>(
+        builder: (context, state) {
+          return state.map(
+            failure: (_) => Container(
+              color: Colors.red,
+              height: 100,
+              width: 100,
+            ),
+            loading: (_) => Center(
+              child: SizedBox(
+                height: Get.height * 0.35,
+                width: 100,
+                child: Lottie.asset(
+                  "assets/lottie/loading.json",
+                ),
+              ),
+            ),
+            loaded: (loaded) => loaded.places.isNotEmpty
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Recomendaciones",
+                        style: textStyleLato(fontSize: 20),
+                      ),
+                      hSizedBox14,
+                      SizedBox(
+                        height: 150,
+                        width: double.infinity,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: loaded.places.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return InkWell(
+                              onTap: () {
+                                Get.to(
+                                  () => PlaceDetail(
+                                    place: loaded.places[index],
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: 130,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                padding: const EdgeInsets.only(bottom: 16),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      flex: 4,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.network(
+                                          loaded.places[index].image,
+                                          height: Get.height * 0.15,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 5,
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            hSizedBox10,
+                                            Text(
+                                              loaded.places[index].name,
+                                              maxLines: 3,
+                                              style:
+                                                  textStyleLato(fontSize: 15),
+                                            ),
+                                            hSizedBox16,
+                                            RatingBar.builder(
+                                              initialRating: loaded
+                                                  .places[index].stars
+                                                  .toDouble(),
+                                              minRating: 1,
+                                              direction: Axis.horizontal,
+                                              allowHalfRating: false,
+                                              itemSize: 15,
+                                              itemCount: 5,
+                                              itemPadding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 0),
+                                              itemBuilder: (context, _) =>
+                                                  const Icon(
+                                                Icons.star,
+                                                color: Color(0xFFD5853B),
+                                              ),
+                                              onRatingUpdate: (rating) {},
+                                            ),
+                                            hSizedBox10,
+                                            Text(
+                                              loaded.places[index].description,
+                                              maxLines: 3,
+                                              style: textStyleLato(
+                                                fontSize: 12,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  )
+                : Container(),
           );
         },
       ),

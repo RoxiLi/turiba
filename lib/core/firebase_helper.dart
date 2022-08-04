@@ -11,7 +11,9 @@ extension FirestoreX on FirebaseFirestore {
   Future<DocumentReference> userDocument() async {
     final box = await Hive.openBox('auth');
     final userId = box.get("userId");
-    return FirebaseFirestore.instance.collection('users').doc(userId);
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc("Ppo8hiqvFaPv2z01CQDu3onyYEB2");
   }
 
   CollectionReference placeDocument() {

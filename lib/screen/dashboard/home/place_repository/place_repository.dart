@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+import 'package:turiba/screen/auth/auth_repository/i_auth_repository.dart';
 import 'package:turiba/screen/dashboard/home/model/place.dart';
 import 'package:turiba/core/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -70,10 +71,16 @@ class PlaceRespository extends IPlaceRepository {
       final newLikes = place.likes + 1;
       final placeRef = _firebaseFirestore.placeDocument().doc(place.id);
       final userRef = await _firebaseFirestore.userDocument();
+      final userSnapshot = await userRef.get();
+      final user = userSnapshot.data();
+      final oldTopics =
+          (user as Map<String, dynamic>)["topics"] as List<dynamic>;
+      oldTopics.addAll(place.topics);
       final likedPlacesDoc = userRef.likedPlacesCollection.doc(place.id);
       final batch = _firebaseFirestore.batch();
       batch.update(placeRef, {"likes": newLikes});
       batch.set(likedPlacesDoc, place.toJson());
+      batch.update(userRef, {"topics": oldTopics});
       batch.commit();
       return right(unit);
     } catch (e) {
@@ -87,9 +94,16 @@ class PlaceRespository extends IPlaceRepository {
       final newLikes = place.likes - 1;
       final placeRef = _firebaseFirestore.placeDocument().doc(place.id);
       final userRef = await _firebaseFirestore.userDocument();
+      final userSnapshot = await userRef.get();
+      final user = userSnapshot.data();
+      final oldTopics =
+          (user as Map<String, dynamic>)["topics"] as List<dynamic>;
+      oldTopics.removeWhere((topic) => place.topics.contains(topic));
+
       final likedPlacesDoc = userRef.likedPlacesCollection.doc(place.id);
       final batch = _firebaseFirestore.batch();
       batch.update(placeRef, {"likes": newLikes});
+      batch.update(userRef, {"topics": oldTopics});
       batch.delete(likedPlacesDoc);
       batch.commit();
       return right(unit);
@@ -117,6 +131,30 @@ class PlaceRespository extends IPlaceRepository {
       } else {
         return right([]);
       }
+    } catch (e) {
+      return left(const Failure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Place>>> getRecomendations() async {
+    try {
+      final userRef = await _firebaseFirestore.userDocument();
+      final userSnapshot = await userRef.get();
+      final user = userSnapshot.data();
+      final topics = (user as Map<String, dynamic>)["topics"] as List<dynamic>;
+      if (topics.isEmpty) {
+        return right([]);
+      }
+      final placeRef = _firebaseFirestore.placeDocument();
+      final query = placeRef.where('topics', arrayContainsAny: topics);
+      final snapshot = await query.get();
+      return right(
+        snapshot.docs
+            .map((doc) =>
+                Place.fromJson(doc.data() as Map<String, dynamic>, doc.id))
+            .toList(),
+      );
     } catch (e) {
       return left(const Failure.serverError());
     }
